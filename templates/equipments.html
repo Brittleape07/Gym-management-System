@@ -1,0 +1,57 @@
+{% extends 'base.html'%}
+
+{% block equipmentssactive %}active{% endblock equipmentssactive %}
+{% block title %}Equipments{%endblock title%}
+
+{% block body%}
+<div class="row"  >
+    <div class="col-sm-4">
+        <h4  class="text-center alert alert-info">Add Equipments</h4>
+        <form action="" method="POST">
+        {% csrf_token %}
+
+        {{form.as_p}}
+        <input type="submit" class="btn btn-success" value="Add">
+        </form>
+    </div>
+
+    <div class="col-sm-8">
+        <h4 class="text-center alert alert-info"> Show Equipment Information</h4>
+        {% if equ %}
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for eq in equ %}
+              <tr>
+                <th scope="row">{{eq.equi_id}}</th>
+                <td>{{eq.name}}</td>
+                <td>{{eq.category}}</td>
+                <td>{{eq.quantity}}</td>
+                <td>
+                  
+                  <form action="{%url 'deletedataeq' eq.equi_id%}" method="post" class= "d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                  </form>
+                  
+              </tr>
+                {% endfor %} 
+            </tbody>
+          </table>
+        {% else %}
+        <h4 class="text-center alert alert-info"> No Records</h4> 
+        {% endif %}
+    </div>
+</div>
+
+    
+
+{%endblock body%}

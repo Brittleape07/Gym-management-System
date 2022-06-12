@@ -1,0 +1,97 @@
+{% extends 'base.html'%}
+
+{% block addmemberactive %}active{% endblock addmemberactive %}
+{% block title %}Add members{%endblock title%}
+
+{% block body%}
+
+{% if success %}
+<div class="alert alert-success  alert-dismissible show fade" role="alert">
+  <strong>Success!</strong> Member is registered to the Gym. 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+<div class="container my-3">
+  <h2 class="text-center py-3">Register a new member</h2>
+  <form class="row g-3" action="" method="post" >
+    
+    {% csrf_token %}
+    <div class="col-md-6">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="col-md-6">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email" style="width:300px" required>
+    </div>
+    <div class="col-md-3">
+      <label for="birthday" class="form-label">DOB:</label>
+      <input type="date" class="form-control" id="birthday" name="birthday" style="width:200px" required>
+    </div>
+    <div class="col-md-3">
+      <label for="occupation" class="form-label">Occupation</label>
+      <select id="occupation" class="form-select" id="occupation" name="occupation" style="width:265px" required>
+        <option selected>Choose...</option>
+        <option>Student</option>
+        <option>Employee</option>
+        <option>Freelancer</option>
+        <option>Unemployed</option>
+        <option>Others...</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+    <label for="Phone" class="form-label">Phone number:</label>
+    <input type="tel" class="form-control" id="phone" name="phone" placeholder="0987654321" pattern="[1-9]{1}[0-9]{9}" style="width:300px" required>
+  </div>
+    <div class="col-12">
+      <label for="address" class="form-label">Address</label>
+      <input type="text" class="form-control" id="address" name="address" placeholder="Apartment, studio, or floor" style="width:1020px" required> required
+    </div>
+    <div class="col-md-6">
+      <label for="city" class="form-label">City</label>
+      <input type="text" class="form-control" id="city" name="city" required>
+    </div>
+    <div class="col-md-3">
+      <label for="state" class="form-label">State</label>
+      <select id="state" name="state" class="form-select" required>
+        <option selected>Choose...</option>
+        <option>Assam</option>
+        <option>Delhi</option>
+        <option>Kolkata</option>
+        <option>Hyderabad</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <label for="zip" class="form-label">Zip</label>
+      <input type="text" class="form-control" id="zip" name="zip" required>
+    </div>
+    <div class="col-md-4">
+      <label for="plan" class="form-label">Plan</label>
+      <select id="plan" class="form-select" style="width:280px" name="plan" required>
+        <option selected>Choose...</option>
+        <option>Silver(1 Month)</option>
+        <option>Gold(6 Months)</option>
+        <option>Diamond(1 year)</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label for="shift" class="form-label">Shift</label>
+      <select id="shift" class="form-select" style="width:280px" name="shift" required>
+        <option selected>Choose...</option>
+        <option>Morning(5:00 am - 8:00 am)</option>
+        <option>Evening(4:00 am - 7:00 pm)</option>
+      </select>
+    </div>
+    <!--<label for="payment" class="form-label">Payment</label>
+    <div id="payment" class="input-group mb-3" style="width:300px" name="payment">
+      <span class="input-group-text">Rs</span>
+      <input type="text" class="form-control" >
+      <span class="input-group-text"></span>
+    </div>-->
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+{% endblock body%}
